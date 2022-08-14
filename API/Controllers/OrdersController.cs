@@ -18,7 +18,7 @@ namespace API.Controllers
             _context = context;
             _logger = logger;
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<List<Order>>> GetOrders()
         {
@@ -26,6 +26,15 @@ namespace API.Controllers
                     .Include(o => o.OrderItems)
                     .Where(order => order.BuyerId == User.Identity.Name)
                     .ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrder(int id)
+        {
+            return await _context.Orders
+                        .Include(order => order.OrderItems)
+                        .Where(order => order.BuyerId == User.Identity.Name && order.Id == id)
+                        .FirstOrDefaultAsync();
         }
     }
 }
