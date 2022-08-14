@@ -4,6 +4,7 @@ import agent from "../../app/api/agent";
 import {User} from "../../app/models/user";
 import {history} from "../..";
 import {toast} from "react-toastify";
+import {setBasket} from "../basket/basketSlice";
 
 interface AccountState {
   user: User | null;
@@ -17,7 +18,9 @@ export const signInUser = createAsyncThunk<User, FieldValues>(
   "account/signInUser",
   async (data, thunkAPI) => {
     try {
-      const user = await agent.Account.login(data);
+      const userDto = await agent.Account.login(data);
+      const {basket, ...user} = userDto;
+      if (basket) thunkAPI.dispatch(setBasket(basket));
       localStorage.setItem("user", JSON.stringify(user));
 
       return user;
@@ -26,13 +29,15 @@ export const signInUser = createAsyncThunk<User, FieldValues>(
     }
   }
 );
-
+// make request to gte the user from the API
 export const getCurrentUser = createAsyncThunk<User>(
   "account/getCurrentUser",
   async (_, thunkAPI) => {
     thunkAPI.dispatch(setUser(JSON.parse(localStorage.getItem("user")!)));
     try {
-      const user = await agent.Account.currentUser();
+      const userDto = await agent.Account.currentUser();
+      const {basket, ...user} = userDto;
+      if (basket) thunkAPI.dispatch(setBasket(basket));
       localStorage.setItem("user", JSON.stringify(user));
 
       return user;
@@ -41,6 +46,7 @@ export const getCurrentUser = createAsyncThunk<User>(
     }
   },
   {
+    // do make the request if we do not have the user key
     condition: () => {
       if (!localStorage.getItem("user")) return false;
     },
@@ -75,7 +81,7 @@ export const accountSlice = createSlice({
     );
 
     builder.addMatcher(isAnyOf(signInUser.rejected), (state, action) => {
-      console.log(action.payload);
+      throw action.payload;
     });
   },
 });
