@@ -1,5 +1,6 @@
 using System.Formats.Asn1;
 using API.Data;
+using API.DTOs;
 using API.Entities.OrderAggregate;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,12 @@ namespace API.Controllers
                         .Include(order => order.OrderItems)
                         .Where(order => order.BuyerId == User.Identity.Name && order.Id == id)
                         .FirstOrDefaultAsync();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Order>> CreateOrder(CreateOrderDto orderDto)
+        {
+            
         }
     }
 }
