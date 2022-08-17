@@ -1,4 +1,5 @@
 namespace API.Entities.OrderAggregate;
+using System.Collections.Generic;
 
 public class Order
 {
