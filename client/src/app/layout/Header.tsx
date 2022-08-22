@@ -35,7 +35,7 @@ const navStyles = {
   typography: "h6",
   textDecoration: "none",
   "&:hover": {color: "grey.500"},
-  "&.active": {color: "text.secondary"},
+  "&.active": {color: "text.primary"},
 };
 
 export default function Header({darkMode, toggleDarkMode}: Props) {
@@ -53,6 +53,7 @@ export default function Header({darkMode, toggleDarkMode}: Props) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          backgroundColor: "#ff6c37",
         }}
       >
         <Box display='flex' alignItems='center'>
@@ -63,7 +64,7 @@ export default function Header({darkMode, toggleDarkMode}: Props) {
             to='/'
             sx={navStyles}
           >
-            SimbaStore
+            Simba Store
           </Typography>
           <Switch checked={darkMode} onChange={toggleDarkMode} />
         </Box>
