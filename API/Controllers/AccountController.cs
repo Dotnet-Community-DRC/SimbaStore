@@ -74,6 +74,15 @@ namespace API.Controllers
         }
 
         [Authorize]
+        [HttpGet("savedAddress")]
+        public async Task<ActionResult<UserAddress>> GetSavedAddress()
+        {
+            return await _userManager.Users.Where(name => name.UserName == User.Identity.Name)
+                                    .Select(user => user.Address)
+                                    .FirstOrDefaultAsync();
+        }
+
+        [Authorize]
         [HttpGet("currentUser")]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
