@@ -1,6 +1,5 @@
-import {Grid, Button} from "@mui/material";
+import {Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import {Link} from "react-router-dom";
 import {useAppSelector} from "../../app/store/configureStore";
 import BasketSummary from "../basket/BasketSummary";
 import BasketTable from "../basket/BasketTable";

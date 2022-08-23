@@ -101,7 +101,7 @@ namespace API.Controllers
                     Country = orderDto.ShippingAddress.Country,
                 };
                 user.Address = address;
-                _context.Update(user);
+                // _context.Update(user); We do not this since EFCore is tracking the changes to be updated 
             }
 
             var result = await _context.SaveChangesAsync() > 0;
