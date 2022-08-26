@@ -31,11 +31,9 @@ namespace API.Services
                 {
                     Amount = subtotal + deliveryFee,
                     Currency = "usd",
-                    PaymentMethodTypes = new List<string>{"cards"}
+                    PaymentMethodTypes = new List<string>{"card"}
                 };
                 intent = await service.CreateAsync(options);
-                basket.PaymentIntentId = intent.Id;
-                basket.ClientSecret = intent.ClientSecret;
             }
             else
             {
