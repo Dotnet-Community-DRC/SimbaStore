@@ -1,31 +1,31 @@
-import Catalog from "../../features/Catalog/Catalog";
-import Header from "./Header";
+import Catalog from '../../features/Catalog/Catalog';
+import Header from './Header';
 import {
   Container,
   createTheme,
   CssBaseline,
   ThemeProvider,
-} from "@mui/material";
-import {useCallback, useEffect, useState} from "react";
-import {Route, Switch} from "react-router";
-import HomePage from "../../features/home/HomePage";
-import AboutPage from "../../features/about/AboutPage";
-import ProductDetails from "../../features/Catalog/ProductDetails";
-import ContactPage from "../../features/contact/ContactPage";
-import {ToastContainer} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ServerError from "../errors/ServerError";
-import NotFound from "../errors/NotFound";
-import BasketPage from "../../features/basket/BasketPage";
-import LoadingComponent from "./LoadingComponent";
-import CheckoutPage from "../../features/checkout/CheckoutPage";
-import {useAppDispatch} from "../store/configureStore";
-import {fetchBasketAsync} from "../../features/basket/basketSlice";
-import Login from "../../features/account/Login";
-import Register from "../../features/account/Register";
-import {getCurrentUser} from "../../features/account/accountSlice";
-import PrivateRoute from "./PrivateRoute";
-import Orders from "../../features/Ordes/Orders";
+} from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router';
+import HomePage from '../../features/home/HomePage';
+import AboutPage from '../../features/about/AboutPage';
+import ProductDetails from '../../features/Catalog/ProductDetails';
+import ContactPage from '../../features/contact/ContactPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ServerError from '../errors/ServerError';
+import NotFound from '../errors/NotFound';
+import BasketPage from '../../features/basket/BasketPage';
+import LoadingComponent from './LoadingComponent';
+import { useAppDispatch } from '../store/configureStore';
+import { fetchBasketAsync } from '../../features/basket/basketSlice';
+import Login from '../../features/account/Login';
+import Register from '../../features/account/Register';
+import { getCurrentUser } from '../../features/account/accountSlice';
+import PrivateRoute from './PrivateRoute';
+import Orders from '../../features/Ordes/Orders';
+import CheckoutWrapper from '../../features/checkout/CheckoutWrapper';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -45,12 +45,12 @@ function App() {
   }, [initApp]);
 
   const [darkMode, setDarkMode] = useState(false);
-  const pallteType = darkMode ? "dark" : "light";
+  const pallteType = darkMode ? 'dark' : 'light';
   const theme = createTheme({
     palette: {
       mode: pallteType,
       background: {
-        default: pallteType === "light" ? "#eaeaea" : "#121212",
+        default: pallteType === 'light' ? '#eaeaea' : '#121212',
       },
     },
   });
@@ -74,7 +74,7 @@ function App() {
           <Route path='/contact' component={ContactPage} />
           <Route path='/server-error' component={ServerError} />
           <Route path='/basket' component={BasketPage} />
-          <PrivateRoute path='/checkout' component={CheckoutPage} />
+          <PrivateRoute path='/checkout' component={CheckoutWrapper} />
           <PrivateRoute path='/orders' component={Orders} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
