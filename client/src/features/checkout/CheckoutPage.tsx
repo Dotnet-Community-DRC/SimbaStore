@@ -84,6 +84,10 @@ export default function CheckoutPage() {
     });
   }, [methods]);
 
+  const submitOrder = async (data: FieldValues) => {
+    
+  };
+
   const handleNext = async (data: FieldValues) => {
     const { nameOnCard, savedAddress, ...shippingAddress } = data;
     if (activeStep === steps.length - 1) {
