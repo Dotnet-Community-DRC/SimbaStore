@@ -102,7 +102,7 @@ namespace API
             app.UseRouting();
             app.UseCors(opt => 
             {                
-                opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3050");              
+                opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3055");              
             });
             app.UseAuthentication();
             app.UseAuthorization();

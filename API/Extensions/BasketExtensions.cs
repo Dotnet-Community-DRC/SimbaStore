@@ -31,6 +31,5 @@ namespace API.Extensions
             return query.Include(i => i.Items).ThenInclude(p => p.Product).Where(b => b.BuyerId == buyerId);
         }
     }
-
    
 }
