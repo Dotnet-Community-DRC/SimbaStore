@@ -102,6 +102,7 @@ namespace API
             app.UseRouting();
 
             app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseCors(opt => 
             {                
@@ -113,6 +114,7 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }
