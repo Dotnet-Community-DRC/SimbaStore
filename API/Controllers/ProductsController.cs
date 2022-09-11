@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
 using API.Extensions;
@@ -17,7 +15,7 @@ namespace API.Controllers
         {
             _context = context;
         }   
-
+        
         [HttpGet]   
         public async Task<ActionResult<PagedList<Product>>> GetProducts([FromQuery]ProductParams productParams)
         {
