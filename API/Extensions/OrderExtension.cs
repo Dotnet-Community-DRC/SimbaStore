@@ -15,7 +15,8 @@ namespace API.Extensions
                 OrderDate = order.OrderDate,
                 ShippingAddress = order.ShippingAddress,
                 DeliveryFee = order.DeliveryFee,
-                SubTotal = order.DeliveryFee,
+                SubTotal = order.DeliveryFee,                 
+                OrderStatus = order.OrderStatus.ToString(),
                 Total = order.GetTotal(),
                 OrderItems = order.OrderItems.Select(item => new OrderItemDto
                 {

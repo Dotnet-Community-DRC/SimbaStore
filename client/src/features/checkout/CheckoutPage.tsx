@@ -190,7 +190,7 @@ export default function CheckoutPage() {
               ) : (
                 <Button onClick={handleBack} variant='contained'>
                   {' '}
-                  Go baack and try again
+                  Go back and try again
                 </Button>
               )}
             </>

@@ -24,7 +24,7 @@ import Login from '../../features/account/Login';
 import Register from '../../features/account/Register';
 import { getCurrentUser } from '../../features/account/accountSlice';
 import PrivateRoute from './PrivateRoute';
-import Orders from '../../features/Ordes/Orders';
+import Orders from '../../features/Orders/Orders';
 import CheckoutWrapper from '../../features/checkout/CheckoutWrapper';
 
 function App() {
