@@ -7,14 +7,14 @@ import {
   TableCell,
   TableBody,
   Button,
-} from "@mui/material";
-import {useEffect} from "react";
-import {useState} from "react";
-import agent from "../../app/api/agent";
-import LoadingComponent from "../../app/layout/LoadingComponent";
-import {Order} from "../../app/models/order";
-import {currencyFormat} from "../../app/util/util";
-import OrderDetailed from "./OrderDetailed";
+} from '@mui/material';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import agent from '../../app/api/agent';
+import LoadingComponent from '../../app/layout/LoadingComponent';
+import { Order } from '../../app/models/order';
+import { currencyFormat } from '../../app/util/util';
+import OrderDetailed from './OrderDetailed';
 
 export default function Orders() {
   const [orders, setOrders] = useState<Order[] | null>(null);
@@ -40,7 +40,7 @@ export default function Orders() {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{minWidth: 650}} aria-label='simple table'>
+      <Table sx={{ minWidth: 650 }} aria-label='simple table'>
         <TableHead>
           <TableRow>
             <TableCell>Order Number</TableCell>
@@ -54,14 +54,13 @@ export default function Orders() {
           {orders?.map(order => (
             <TableRow
               key={order.id}
-              sx={{"&:last-child td, &:last-child th": {border: 0}}}
-            >
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component='th' scope='row'>
                 {order.id}
               </TableCell>
               <TableCell align='right'>{currencyFormat(order.total)}</TableCell>
               <TableCell align='right'>
-                {order.orderDate.split("T")[0]}
+                {order.orderDate.split('T')[0]}
               </TableCell>
               <TableCell align='right'>{order.orderStatus}</TableCell>
               <TableCell align='right'>
