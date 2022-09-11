@@ -100,6 +100,9 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseDefaultFiles();
+
             app.UseCors(opt => 
             {                
                 opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3055");              
