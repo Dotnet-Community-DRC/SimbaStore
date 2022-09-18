@@ -55,7 +55,7 @@ namespace API.Controllers
             return Ok(new { brands,types });
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, Member")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(CreateProductDto productDto)
         {

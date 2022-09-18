@@ -24,7 +24,7 @@ namespace API.Data
                 await userManager.AddToRoleAsync(user, "Member");
 
 
-                 var admin = new User
+                var admin = new User
                 {
                     UserName = "Simba",
                     Email = "simba@sudi.dev"
