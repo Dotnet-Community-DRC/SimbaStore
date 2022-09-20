@@ -55,7 +55,7 @@ namespace API.Controllers
             return Ok(new { brands,types });
         }
 
-        [Authorize(Roles = "admin, Member")]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(CreateProductDto productDto)
         {
@@ -67,6 +67,40 @@ namespace API.Controllers
             if(result) return CreatedAtRoute("GetProduct", new { Id = product.Id }, product);
 
             return BadRequest(new ProblemDetails { Title = "Problem saving Product" });
+        }
+
+        [Authorize(Roles="Admin")]
+        [HttpPut]
+        public async Task<ActionResult> UpdateProduct(UpdateProductDto productDto)
+        {
+            var product = await _context.Products.FindAsync(productDto.Id);
+
+            if( product is null) return NotFound();
+
+            _mapper.Map(productDto, product);
+
+            var result = await _context.SaveChangesAsync() > 0;
+
+            if(result) return NoContent();
+
+            return BadRequest(new ProblemDetails{Title = "Problem updating product!"});
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if(product is null) return NotFound();
+
+            _context.Products.Remove(product);
+
+            var result = await _context.SaveChangesAsync() > 0;
+
+            if(result) return Ok();
+
+            return BadRequest(new ProblemDetails { Title = "Problem deleting a product" });
         }
     }
 }
