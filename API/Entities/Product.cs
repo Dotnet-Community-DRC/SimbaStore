@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace API.Entities
 {
     public class Product
@@ -21,6 +16,6 @@ namespace API.Entities
         public string Brand { get; set; }
         
         public int QuantityInStock { get; set; } 
-        
+        public string PublicId { get; set; }
     }
 }
