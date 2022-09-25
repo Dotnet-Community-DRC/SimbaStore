@@ -81,6 +81,8 @@ const Catalog = {
   fetchFilters: () => requests.get('/products/filters'),
 };
 
+console.log('Catalog', Catalog.list);
+
 const TestErrors = {
   get400Error: () => requests.get('buggy/bad-request'),
   get404Error: () => requests.get('buggy/not-found'),
