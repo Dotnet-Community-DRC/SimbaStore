@@ -1,4 +1,3 @@
-import Catalog from '../../features/Catalog/Catalog';
 import Header from './Header';
 import {
   Container,
@@ -10,6 +9,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
 import HomePage from '../../features/home/HomePage';
 import AboutPage from '../../features/about/AboutPage';
+import Catalog from '../../features/Catalog/Catalog';
 import ProductDetails from '../../features/Catalog/ProductDetails';
 import ContactPage from '../../features/contact/ContactPage';
 import { ToastContainer } from 'react-toastify';
