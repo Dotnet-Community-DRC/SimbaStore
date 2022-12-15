@@ -32,10 +32,14 @@ const rightLinks = [
 
 const navStyles = {
   color: 'inherit',
-  typography: 'h6',
   textDecoration: 'none',
-  '&:hover': { color: 'grey.500' },
-  '&.active': { color: 'text.primary' },
+  typography: 'h6',
+  '&:hover': {
+    color: 'grey.500',
+  },
+  '&.active': {
+    color: 'text.secondary',
+  },
 };
 
 export default function Header({ darkMode, toggleDarkMode }: Props) {
@@ -53,7 +57,7 @@ export default function Header({ darkMode, toggleDarkMode }: Props) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          backgroundColor: '#ff6c37',
+          // backgroundColor: '#ff6c37',
         }}>
         <Box display='flex' alignItems='center'>
           <Typography
