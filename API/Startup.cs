@@ -73,7 +73,7 @@ namespace API
             else
             {
                 // Use connection string provided at runtime by flyio.
-                var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+                var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");                
 
                 // Parse connection URL to connection string for Npgsql
                 connUrl = connUrl.Replace("postgres://", string.Empty);
@@ -86,7 +86,8 @@ namespace API
                 var pgHost = pgHostPort.Split(":")[0];
                 var pgPort = pgHostPort.Split(":")[1];
 
-                connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};SSL Mode=Require;Trust Server Certificate=true";
+                connString = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+
             }
             services.AddDbContext<StoreContext>(options =>
             {
