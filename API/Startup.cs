@@ -63,12 +63,12 @@ namespace API
 
             var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-            string connStr;
+            string connString;
 
             if (env == "Development")
             {
                 // Use connection string from file.
-                connStr = Configuration.GetConnectionString("DefaultConnection");
+                connString = Configuration.GetConnectionString("DefaultConnection");
             }
             else
             {
@@ -91,7 +91,7 @@ namespace API
             }
             services.AddDbContext<StoreContext>(options =>
             {
-                options.UseNpgsql(connStr);
+                options.UseNpgsql(connString);
             });
 
             services.AddCors();
