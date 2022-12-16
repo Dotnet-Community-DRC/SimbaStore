@@ -65,11 +65,10 @@ namespace API
 
             string connString;
 
-            if (env == "Development")
-            {
+            if (env == "Development")            
                 // Use connection string from file.
                 connString = Configuration.GetConnectionString("DefaultConnection");
-            }
+            
             else
             {
                 // Use connection string provided at runtime by flyio.
