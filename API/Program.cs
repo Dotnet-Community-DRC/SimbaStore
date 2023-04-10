@@ -22,8 +22,8 @@ namespace API
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
             try
             {
-              await context.Database.MigrateAsync(); 
-              await DbInitializer.Initialize(context, userManager);
+                await context.Database.MigrateAsync(); 
+                await DbInitializer.Initialize(context, userManager);
             }
             catch (Exception  ex)
             {

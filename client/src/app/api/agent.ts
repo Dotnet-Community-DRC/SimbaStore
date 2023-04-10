@@ -100,7 +100,7 @@ const Account = {
 const Orders = {
   list: () => requests.get('orders'),
   fetch: (id: number) => requests.get(`orders/${id}`),
-  create: (values: any) => requests.post('orders', values),
+create: (values: any) => requests.post('orders', values),
 };
 const Basket = {
   get: () => requests.get('basket'),
