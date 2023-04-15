@@ -73,6 +73,35 @@ const requests = {
   post: (url: string, body: {}) => axios.post(url, body).then(responseBody),
   put: (url: string, body: {}) => axios.put(url, body).then(responseBody),
   delete: (url: string) => axios.delete(url).then(responseBody),
+  postForm: (url: string, data: FormData) =>
+    axios
+      .post(url, data, {
+        headers: { 'content-type': 'mulitpart/form-data' },
+      })
+      .then(responseBody),
+  putForm: (url: string, data: FormData) =>
+    axios
+      .put(url, data, {
+        headers: { 'content-type': 'mulitpart/form-data' },
+      })
+      .then(responseBody),
+};
+
+const createFormData = (item: any) => {
+  let formData = new FormData();
+  for (const key in item) {
+    formData.append(key, item[key]);
+  }
+
+  return formData;
+};
+
+const Admin = {
+  createProduct: (product: any) =>
+    requests.postForm('products', createFormData(product)),
+  updateProduct: (product: any) =>
+    requests.putForm('products', createFormData(product)),
+  deleteProduct: (id: number) => requests.delete(`products/${id}`),
 };
 
 const Catalog = {
@@ -100,7 +129,7 @@ const Account = {
 const Orders = {
   list: () => requests.get('orders'),
   fetch: (id: number) => requests.get(`orders/${id}`),
-create: (values: any) => requests.post('orders', values),
+  create: (values: any) => requests.post('orders', values),
 };
 const Basket = {
   get: () => requests.get('basket'),
@@ -121,6 +150,7 @@ const agent = {
   Account,
   Orders,
   Payments,
+  Admin,
 };
 
 export default agent;
