@@ -122,7 +122,6 @@ export const catalogSlice = createSlice({
       productsAdapter.upsertOne(state, action.payload);
       state.productsLoaded = false;
     },
-
     removeProduct: (state, action) => {
       productsAdapter.removeOne(state, action.payload);
       state.productsLoaded = false;

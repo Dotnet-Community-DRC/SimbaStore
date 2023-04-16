@@ -41,14 +41,11 @@ export default function Inventory() {
   function handleDeleteProduct(id: number) {
     setLoading(true);
     setTarget(id);
-    const response = agent.Admin.deleteProduct(id)
+    agent.Admin.deleteProduct(id)
       .then(() => dispatch(removeProduct(id)))
       .catch(error => console.log(error))
       .finally(() => setLoading(false));
-    console.log('response ===>>>>>>', response);
   }
-
-  // console.log('handle Delete Product =====>>>>>>>>', handleDeleteProduct);
 
   function cancelEdit() {
     if (selectProduct) setSelectProduct(undefined);
@@ -117,8 +114,8 @@ export default function Inventory() {
                   <LoadingButton
                     loading={loading && target === product.id}
                     startIcon={<Delete />}
-                    onClick={() => handleDeleteProduct(product.id)}
                     color='error'
+                    onClick={() => handleDeleteProduct(product.id)}
                   />
                 </TableCell>
               </TableRow>
