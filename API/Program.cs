@@ -22,13 +22,13 @@ namespace API
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
             try
             {
-                await context.Database.MigrateAsync(); 
+                await context.Database.MigrateAsync();
                 await DbInitializer.Initialize(context, userManager);
             }
-            catch (Exception  ex)
+            catch (Exception ex)
             {
-                logger.LogError(ex, "An error occurred while migrating the database.");
-            }   
+                logger.LogError(ex, "Problem migrating data");
+            }
 
             await host.RunAsync();
         }

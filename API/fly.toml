@@ -1,0 +1,41 @@
+# fly.toml file generated for sudi on 2022-12-16T07:28:14+02:00
+
+app = "sudi"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[env]
+
+  StripeSettings:WebhookSecret = 'whsec_787400c6fcfb1b5740c981348312074c221134c05c3181e9876072d584b0d7ce'
+  StripeSettings:SecretKey = 'sk_test_51La4HADZC98dTivtvQrtpl5lucz2gGQt7huRblH15JExuw5uKi5Gs1dodp1YzxQVwWUV9yyS0loNDgjlmDIv2Kkn00mHTN3AiS'  StripeSettings:PublishableKey = pk_test_51La4HADZC98dTivt6hch36yFmynDCqVM4kVsl78LAJelGnJS6TYpIWqiKNUCSDSvJgyDrGl21RYDkTPMrYrUqlHd00mbumF7Ct 
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
