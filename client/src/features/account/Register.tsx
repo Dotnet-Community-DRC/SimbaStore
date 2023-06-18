@@ -7,14 +7,14 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import {Paper} from "@mui/material";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {LoadingButton} from "@mui/lab";
 import agent from "../../app/api/agent";
 import {toast} from "react-toastify";
 
 export default function Register() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -70,7 +70,7 @@ export default function Register() {
             agent.Account.register(data)
               .then(() => {
                 toast.success("Registration successful-you can now login");
-                history.push("/login");
+                navigate("/login");
               })
               .catch(error => handldeApiErros(error))
           )}
